@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Instagram</title>
+</head>
+
+<body>
+
+    <h1>Instagram</h1>
+  
+    <%- include("partials/navbar") %>
+    <section class="profile">
+
+       <img src="/mupic.png" alt="Profile Picture">
+       <h3>name: <%=user.name%></h3>
+       <h3>username: <%=user.username%></h3>
+
+        <p>Learning Web Development 🚀</p>
+
+        <div class="stats">
+            <span>Posts: 4</span>
+            <span>Followers: <%=user.followers%></span>
+            <span>Following: <%=user.following%></span>
+           
+        </div>
+          <h2 class="bio"><%=user.bio%></h2>
+    </section>
+
+    <section class="posts">
+
+    <h2>Recent Posts</h2>
+    <% for(let post of posts){%>
+
+        <div class="post">
+            <h3>@<%= post.username %></h3>
+            <p>Likes: <%= post.likes %></p>
+            <p><%= post.caption %></p>
+            <% if (post.likes > 100) { %>
+                <p>🔥 Popular Post</p>
+            <% } else { %>
+                <p>Regular Post</p>
+            <% } %>
+        </div>
+    <%}%>
+    </section>
+<%- include("partials/footer") %>
+</body>
+</html>
